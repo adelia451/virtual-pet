@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "$SCRIPT_DIR/theme" || exit
+
+curl -s -X POST https://virtualPet.mimobox.sh/feed > /dev/null
+
+
+messages=(
+  " ${PINK}Pixel's been fed!${RESET}"
+  " ${PINK}Nom nom nom...${RESET}"
+  " ${PINK}She ate it all!${RESET}"
+)
+
+echo "${messages[$RANDOM % ${#messages[@]}]}"

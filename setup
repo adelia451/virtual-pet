@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "$SCRIPT_DIR/scripts/theme" || exit
+
+echo ""
+echo -e "${CYAN} Hi user${RESET}"
+
+echo ""
+sleep 1
+echo -e "${CYAN} This will allow you to take care of my virtual cat Pixel with me!${RESET}"
+
+# CRON
+
+echo ""
+sleep 1
+echo -e "${CYAN} I want to automatically pull updates from my github every 30 mins ${RESET}${PINK}(cron)${RESET}"
+read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${PINK} (y/n) ${RESET}")" answer
+echo ""
+    if [[ $answer == "y" ]]; then
+        (crontab -l 2>/dev/null; echo "*/30 * * * * cd $SCRIPT_DIR && git pull") | crontab -
+        echo -e "${GREEN} Yay! I'll stay up to date ᓚ₍ ^. .^₎${RESET}"
+    else
+        echo -e "${CYAN} You can manually update with:${RESET}"
+        echo -e "${PINK}cd $SCRIPT_DIR && git pull${RESET}"
+    fi
+
+# ALIASES
+echo ""
+sleep 1
+echo -e "${CYAN} I want to add aliases to your terminal to make shorter commands ${RESET}${PINK}(bashrc)${RESET}"
+read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${PINK} (y/n) ${RESET}")" answer
+echo ""
+    chmod +x "$SCRIPT_DIR"/scripts/* #scripts always executable
+    if [[ $answer == "y" ]]; then
+        echo "alias virtualPet=\"$SCRIPT_DIR/scripts/virtualPet\"" >> ~/.bashrc
+        echo "alias clean=\"$SCRIPT_DIR/scripts/clean\"" >> ~/.bashrc
+        echo "alias explore=\"$SCRIPT_DIR/scripts/explore\"" >> ~/.bashrc
+        echo "alias feed=\"$SCRIPT_DIR/scripts/feed\"" >> ~/.bashrc
+        echo "alias fish=\"$SCRIPT_DIR/scripts/fish\"" >> ~/.bashrc
+        echo "alias pat=\"$SCRIPT_DIR/scripts/pat\"" >> ~/.bashrc
+        echo "alias play=\"$SCRIPT_DIR/scripts/play\"" >> ~/.bashrc
+        echo "alias rest=\"$SCRIPT_DIR/scripts/rest\"" >> ~/.bashrc
+        echo "alias train=\"$SCRIPT_DIR/scripts/train\"" >> ~/.bashrc
+
+        echo ""
+        echo ""
+        echo -e "${GREEN} All done! Type${RESET}${BOLD}${PINK} virtualPet${RESET}${GREEN} to get started ${RESET}"
+
+    else
+        echo -e "${CYAN} You can still play by running commands manually. Reference the main page${RESET}"
+        echo ""
+        echo -e "${CYAN} Main page: ${RESET}"
+        echo -e "${PINK}$SCRIPT_DIR/scripts/virtualPet${RESET}"
+        echo ""
+        echo -e "${CYAN} Command format: ${RESET}"
+        echo -e "${PINK}$SCRIPT_DIR/scripts${RESET}${GREEN}${BOLD}/COMMAND${RESET}"
+        echo ""
+    fi
+
+source ~/.bashrc
+
+
+
+
+

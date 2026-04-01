@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "$SCRIPT_DIR/theme" || exit
+
+readarray -t COMMANDS << "MEOW"
+hunger|feed   fish
+happiness|explore   pat   
+energy|play   rest
+health|clean  train   
+MEOW
+
+echo ""
+echo -e "${PINK}────────────────────────────────────────────────────────${RESET}"
+
+echo ""
+echo -e "${GREEN}      ██████  ██ ██   ██ ███████ ██         ${RESET}"
+echo -e "${GREEN}      ██   ██ ██  ██ ██  ██      ██          ${RESET}"
+echo -e "${GREEN}      ██████  ██   ███   █████   ██          ${RESET}"
+echo -e "${GREEN}      ██      ██  ██ ██  ██      ██          ${RESET}${PINK}╱|、${RESET}"
+echo -e "${GREEN}      ██      ██ ██   ██ ███████ ███████    ${RESET}${PINK}(˚ˎ 。7  ${RESET}"
+echo "                                             ${RESET}${PINK}|、˜〵 "
+echo -e "          ${CYAN}\e]8;;https://virtualPet.mimobox.sh\e\\${LINE}virtualPet.mimobox.sh\e]8;;\e\\${RESET}${PINK}              じしˍ,)ノ${RESET}"
+
+echo ""
+echo -e "${PINK}────────────────────────────────────────────────────────${RESET}"
+
+echo ""
+echo -e "${CYAN} Welcome to my Virtual Pet CLI ฅ₍^•⩊ •マⳊ ${RESET}"
+echo "" 
+echo -e "${CYAN} Here are the commands: ${RESET}"
+echo ""
+
+# 12 | 40
+echo -e "${PINK}┌────────────┬─────────────────────────────────────────┐${RESET}"
+
+total=${#COMMANDS[@]}
+count=0
+# <<< here string, feeds a string directly into a command as input, reads from $line
+for line in "${COMMANDS[@]}"; do
+    count=$((count + 1))
+    IFS='|' read -r name value <<< "$line"
+    
+        nSpace=$((12 - ${#name}))
+        vSpace=$((40 - ${#value}))
+        pSpace=$(printf '%*s' "$nSpace" '')
+        lSpace=$(printf '%*s' "$vSpace" '')
+        printf "${PINK}|${RESET}${BOLD}%s${RESET}${pSpace}${PINK}|${RESET} %s${lSpace}${PINK}|${RESET}\n" "$name" "$value"
+  
+    if [[ $count -lt $total ]]; then
+    echo -e "${PINK}├────────────┼─────────────────────────────────────────┤${RESET}"
+    fi
+done
+echo -e "${PINK}└────────────┴─────────────────────────────────────────┘${RESET}"
+
+echo ""
+echo -e "${PINK}────────────────────────────────────────────────────────${RESET}"
