@@ -4,6 +4,7 @@
     --blue: #D9FFF8;
     --cyan: #00ffff;
     --grey: #353635;
+    --background-color: #fdf6f0;
     --font-heading: "Doto", sans-serif;
     --font-body: "JetBrains Mono", monospace;
 }
@@ -12,7 +13,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--blue); 
+    background-color: var(--background-color); 
+    background-image: radial-gradient(rgba(255, 95, 175, 0.379) 1px, transparent 1px);
+    background-size: 30px 30px;
     
     font-family: var(--font-body);
     font-size: 17px;
@@ -55,19 +58,19 @@ body {
 /* BARS */
 #stats-title {
     font-family: var(--font-body);
-    color: var(--green);
-    font-size: 16px;
+    color: var(--pink);
+    font-size: 18px;
     font-style: italic;
     margin-bottom: 0.5rem;
     letter-spacing: 0.2rem;
 }
 
 #bar-container {
-    width: 350px;
+    width: 500px;
     background:var(--grey);
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid var(--green);
+    border: 2px solid var(--pink);
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -76,29 +79,114 @@ body {
 .bar {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 5px;
 }
 
-.bar span {
+.bar span:first-child {
     color: var(--green);
-    font-size: 12px;
-    min-width: 80px;
+    font-size: 14px;
+    width: 90px;
+    flex-shrink: 0;
 }
 
 .bar-outer {
-    /* flex: 1; */
-    width:200px;
+    flex: 1;
     border: 1.8px solid var(--cyan);
     border-radius: 999px;
     height: 16px;
     padding: 2px;
+    min-width: 0;
 }
 
 .bar-fill {
     width: 0%;
     height: 100%;
     border-radius: 999px;
-    background: var(--pink);
+    background: var(--blue);
     transition: width 0.5s ease;
 
+}
+
+.bar-fill.swag {
+    background: linear-gradient(90deg, #FF5FAF, #00ffff, #00FF87);
+}
+
+.bar-val {
+    color: var(--green);
+    font-size: 13px;
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+    
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 999px;
+}
+
+/* INSTRUCTIONS */
+#instructions {
+    width: 860px;
+    background: var(--grey);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid var(--pink);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inst-title {
+    color: var(--pink);
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.2rem;
+}
+
+.inst-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: var(--green);
+    font-size: 13px;
+}
+
+.step-num {
+    color: var(--pink);
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.inst-step code {
+    color: var(--cyan);
+    font-family: var(--font-body);
+}
+
+.inst-commands {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--green);
+    padding-top: 1rem;
+}
+
+.inst-commands span {
+    color: var(--cyan);
+    font-size: 13px;
+    background: rgba(0, 255, 135, 0.08);
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 255, 135, 0.2);
 }

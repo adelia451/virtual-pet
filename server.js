@@ -32,10 +32,18 @@ function applyDecay(pet){
     const energyHours = (now - pet.lastEnergy) / 3600000
     const healthHours = (now - pet.lastHealth) / 3600000
 
-    pet.hunger = Math.max(0, Math.min(100, pet.hunger - (hungerHours * 2 )))
-    pet.happiness = Math.max(0, Math.min(100, pet.happiness - (happinessHours * 2 )))
-    pet.energy = Math.max(0, Math.min(100, pet.energy - (energyHours * 2 )))
-    pet.health = Math.max(0, Math.min(100, pet.health - (healthHours * 2 )))
+    pet.hunger = Math.max(0, Math.min(100, 
+        pet.hunger - Math.floor(hungerHours * 2 )
+    ))
+    pet.happiness = Math.max(0, Math.min(100,
+        pet.happiness - Math.floor(happinessHours * 2 )
+    ))
+    pet.energy = Math.max(0, Math.min(100,
+        pet.energy - Math.floor(energyHours * 2 )
+    ))
+    pet.health = Math.max(0, Math.min(100, 
+        pet.health - Math.floor(healthHours * 2 )
+    ))
 
     return pet
 }

@@ -2,5 +2,10 @@
     "hunger": 50,
     "happiness": 50,
     "energy": 50,
-    "health": 50
+    "health": 50,
+
+    "lastHunger": 0,
+    "lastHappiness": 0,
+    "lastEnergy": 0,
+    "lastHealth": 0
 }

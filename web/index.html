@@ -32,6 +32,7 @@ Updates UI (happy/sad/etc.) -->
             <div class="bar-outer">
                 <div class="bar-fill" id="happiness-fill"></div>
             </div>
+            <span class="bar-val" id="happiness-val">0</span>
         </div>
 
         <div class="bar">
@@ -39,6 +40,7 @@ Updates UI (happy/sad/etc.) -->
             <div class="bar-outer">
                 <div class="bar-fill" id="hunger-fill"></div>
             </div>
+            <span class="bar-val" id="hunger-val">0</span>
         </div>
 
         <div class="bar">
@@ -46,6 +48,7 @@ Updates UI (happy/sad/etc.) -->
             <div class="bar-outer">
                 <div class="bar-fill" id="energy-fill"></div>
             </div>
+            <span class="bar-val" id="energy-val">0</span>
         </div>
 
         <div class="bar">
@@ -53,18 +56,44 @@ Updates UI (happy/sad/etc.) -->
             <div class="bar-outer">
                 <div class="bar-fill" id="health-fill"></div>
             </div>
+            <span class="bar-val" id="health-val">0</span>
         </div>
 
-          <div class="bar">
-            <!-- hardcoded swag bar -->
+        <div class="bar">
             <span>Swag</span>
             <div class="bar-outer">
-                <div class="bar-fill" style="width: 100%"></div>
+                <div class="bar-fill swag" style="width: 100%"></div>
+            </div>
+            <span class="bar-val" id="swag-val">100</span>
+        </div>
+        
+    </div>
+    </div>
+    
+        <div id="instructions">
+            <div class="inst-title"># how to play</div>
+            <div class="inst-step">
+                <span class="step-num">1</span>
+                <span>Clone the repo: <code>git clone https://github.com/adelia451/virtual-pet.git ~/virtual-pet</code></span>
+            </div>
+            <div class="inst-step">
+                <span class="step-num">2</span>
+                <span>Run setup: <code>bash ~/virtual-pet/setup</code></span>
+            </div>
+            <div class="inst-step">
+                <span class="step-num">3</span>
+                <span>Reload your terminal: <code>source ~/.bashrc</code></span>
+            </div>
+            <div class="inst-step">
+                <span class="step-num">4</span>
+                <span>Type <code>virtualPet</code> to get started</span>
+            </div>
+            <div class="inst-commands">
+                <span>feed</span><span>fish</span><span>pat</span><span>explore</span>
+                <span>play</span><span>rest</span><span>clean</span><span>train</span>
             </div>
         </div>
 
-    </div>
-    </div>          
     </div>
 </body>
 <script src="app.js"></script>

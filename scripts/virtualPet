@@ -28,8 +28,8 @@ echo ""
 echo -e "${CYAN} Welcome to my Virtual Pet CLI ฅ₍^•⩊ •マⳊ ${RESET}"
 echo "" 
 echo -e "${CYAN} Here are the commands: ${RESET}"
-echo ""
 
+echo ""
 # 12 | 40
 echo -e "${PINK}┌────────────┬─────────────────────────────────────────┐${RESET}"
 
@@ -51,6 +51,14 @@ for line in "${COMMANDS[@]}"; do
     fi
 done
 echo -e "${PINK}└────────────┴─────────────────────────────────────────┘${RESET}"
+
+echo ""
+echo -e "${PINK}────────────────────────────────────────────────────────${RESET}"
+
+echo ""
+CLEAN_DIR="${SCRIPT_DIR/#$HOME/~}"
+echo -e "${CYAN} Command format if you did not add aliases: ${RESET}"
+echo -e "${PINK} bash ${CLEAN_DIR}/COMMAND${RESET}"
 
 echo ""
 echo -e "${PINK}────────────────────────────────────────────────────────${RESET}"
