@@ -21,6 +21,7 @@ The setup script walks you through configuration options:
 2. Aliases for commands
     - Yes: You can use commands like `feed`, `play`, `rest`, etc., directly into your terminal.
     - No: You must run the full path every time, e.g.:
+    
     ```bash
     bash ~/virtual-pet/scripts/virtualPet
     bash ~/virtual-pet/scripts/play

@@ -45,6 +45,11 @@ function applyDecay(pet){
         pet.health - Math.floor(healthHours * 2 )
     ))
 
+    pet.lastHunger = now
+    pet.lastHappiness = now
+    pet.lastEnergy = now
+    pet.lastHealth = now
+    
     return pet
 }
 

@@ -27,4 +27,7 @@ setInterval(() => {
                 img.src = 'neutral.png'
             }
         })
+        .catch(() => {
+        console.log("server unreachable")
+        })
 }, 3000)

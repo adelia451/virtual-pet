@@ -2,7 +2,11 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$SCRIPT_DIR/theme" || exit
 
-curl -s -X POST https://virtualPet.mimobox.sh/pat > /dev/null
+if ! curl -s -X POST https://virtualPet.mimobox.sh/pat > /dev/null; then
+  echo " ${PINK}Pixel can't reach the server right now :(${RESET}"
+  exit 1
+fi
+
 
 messages=(
   " ${PINK}*purrrs*${RESET}"
