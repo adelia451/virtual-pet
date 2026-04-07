@@ -10,6 +10,12 @@ setInterval(() => {
             document.getElementById('energy-fill').style.width = pet.energy + '%'
             document.getElementById('health-fill').style.width = pet.health + '%'
 
+            //update text
+            document.getElementById('hunger-val').textContent = pet.hunger
+            document.getElementById('happiness-val').textContent = pet.happiness
+            document.getElementById('energy-val').textContent = pet.energy
+            document.getElementById('health-val').textContent = pet.health
+
             // image swap
             const img = document.getElementById('pixel-image')
 

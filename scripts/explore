@@ -8,7 +8,7 @@ curl -s -X POST https://virtualPet.mimobox.sh/explore > /dev/null
 messages=(
   " ${PINK}Pixel brought you something... ᘛ⁐ᕐᐷ${RESET}"
   " ${PINK}Pixel found bugs outside... [CONFLICT (content): 〰 〰 ꕤ ]${RESET}"
-  " ${PINK}Pixel made a friend at the park... ૮ฅ•ﻌ•აฅ  ฅ^•ﻌ•^ฅ"
+  " ${PINK}Pixel made a friend at the park... ૮ฅ•ﻌ•აฅ  ฅ^•ﻌ•^ฅ${RESET}"
 )
 
 echo "${messages[$RANDOM % ${#messages[@]}]}"
