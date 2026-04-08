@@ -2,7 +2,12 @@ const fs = require('fs')
 const express = require('express')
 const app = express()
 
-app.use(express.static('web'))
+// Use absolute path for static files because PM2 may run the app
+// from a different working directory, causing Express to not find /web
+// (this caused "Cannot GET /" before).
+// path.join ensures the correct path across environments
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'web')))
 
 // read pet.json
 function loadPet() {
