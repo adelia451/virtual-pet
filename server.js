@@ -85,7 +85,7 @@ app.post(['/explore', '/pat'], (req, res) => {
     const pet = loadPet()
     applyDecay(pet)
 
-    pet.happiness = Math.min(100, pet.happiness + 2)
+    pet.happiness = Math.min(100, pet.happiness + 4)
     pet.lastHappiness = Date.now()
 
     savePet(pet)
@@ -97,7 +97,7 @@ app.post(['/play', '/rest'], (req, res) => {
     const pet = loadPet()
     applyDecay(pet)
 
-    pet.energy = Math.min(100, pet.energy + 2)
+    pet.energy = Math.min(100, pet.energy + 4)
     pet.lastEnergy = Date.now()
     
     savePet(pet)
@@ -109,7 +109,7 @@ app.post(['/clean', '/train'], (req, res) => {
     const pet = loadPet()
     applyDecay(pet)
 
-    pet.health = Math.min(100, pet.health + 2)
+    pet.health = Math.min(100, pet.health + 4)
     pet.lastHealth = Date.now()
 
     savePet(pet)
