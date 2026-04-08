@@ -34,7 +34,7 @@ echo ""
             echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
             echo ""
             sleep 1
-            echo -e "${CYAN} Since you have to do it manually, I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${CYAN}that does what is written above${PINK}(bashrc)${RESET}"
+            echo -e "${CYAN} Since you have to do it manually, I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${CYAN}that does what is written above ${PINK}(bashrc)${RESET}"
             echo ""
             sleep 1
             read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
