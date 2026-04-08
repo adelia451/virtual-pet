@@ -14,7 +14,8 @@ echo -e "${BROWN} This will allow you to take care of my virtual cat Pixel with 
 # pixelUpdate
 offer_pixelUpdate() {
     echo -e "${GREEN} > You can manually update with: ${RESET}${PINK}cd $SCRIPT_DIR && git pull${RESET}"
-    echo -e "${GREEN} > OR I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${GREEN}that does what is written above ${PINK}(bashrc)${RESET}"    echo ""
+    echo -e "${GREEN} > OR I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${GREEN}that does what is written above ${PINK}(bashrc)${RESET}"
+    echo ""
     sleep 1
     read -p "$(echo -e "${CYAN} Can I add the alias? ${RESET}${BROWN} (y/n) ${RESET}")" answer
     # >>> user says yes to alias ?
