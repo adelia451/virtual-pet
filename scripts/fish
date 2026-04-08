@@ -2,11 +2,16 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$SCRIPT_DIR/theme" || exit
 
-if ! curl -s -X POST https://virtualPet.mimobox.sh/fish > /dev/null; then
-  echo " ${PINK}Pixel can't reach the server right now :(${RESET}"
-  exit 1
+result=$(curl -s -o /dev/null -w "%{http_code}" -X POST https://virtualpet.mimobox.sh/fish 2>/dev/null)
+
+if [[ "$result" != "200" ]]; then
+    result=$(curl -sk -o /dev/null -w "%{http_code}" -X POST https://virtualpet.mimobox.sh/fish 2>/dev/null)
 fi
 
+if [[ "$result" != "200" ]]; then
+    echo " ${PINK}Pixel can't reach the server right now :(${RESET}"
+    exit 1
+fi
 
 messages=(
   " ${PINK}>-;;€ᐷ${RESET}"
@@ -15,3 +20,4 @@ messages=(
 )
 
 echo "${messages[$RANDOM % ${#messages[@]}]}"
+
