@@ -2,6 +2,7 @@
 PINK=$'\e[38;5;205m'
 GREEN=$'\e[38;5;49m'
 CYAN=$'\e[38;5;14m'
+BROWN=$'\e[38;5;223m'
 RESET=$'\e[0m'
 LINE=$'\e[4m'
 BOLD=$'\e[1m'
