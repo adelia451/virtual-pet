@@ -12,7 +12,7 @@ const PET_FILE = path.join(__dirname, 'pet.json')
 
 // read pet.json
 function loadPet() {
-    const pet = JSON.parse(fs.readFileSync('pet.json', 'utf8'))
+    const pet = JSON.parse(fs.readFileSync(PET_FILE, 'utf8'))
 
     const now = Date.now()
 
@@ -26,7 +26,7 @@ function loadPet() {
 
 // save pet.json back
 function savePet(pet) {
-    fs.writeFileSync('pet.json', JSON.stringify(pet, null, 2))
+    fs.writeFileSync(PET_FILE, JSON.stringify(pet, null, 2))
 }
 
 // decay
