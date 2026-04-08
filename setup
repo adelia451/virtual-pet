@@ -11,47 +11,48 @@ echo ""
 sleep 1
 echo -e "${BROWN} This will allow you to take care of my virtual cat Pixel with me!${RESET}"
 
+# pixelUpdate
+offer_pixelUpdate() {
+    echo -e "${GREEN} > You can manually update with: ${RESET}${PINK}cd $SCRIPT_DIR && git pull${RESET}"
+    echo -e "${GREEN} > OR I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${GREEN}that does what is written above ${PINK}(bashrc)${RESET}"    echo ""
+    sleep 1
+    read -p "$(echo -e "${CYAN} Can I add the alias? ${RESET}${BROWN} (y/n) ${RESET}")" answer
+    # >>> user says yes to alias ?
+    # >>> y
+        if [[ $answer == "y" ]]; then
+            echo "" >> ~/.bashrc
+            echo "alias pixelUpdate=\"cd $SCRIPT_DIR && git pull\"" >> ~/.bashrc
+            echo -e "${GREEN} > AFTER setup run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
+        fi
+    # >>> n : nothing
+}
+
 # CRON 
 echo ""
 sleep 1
-echo -e "${CYAN} I want to automatically pull updates from my github every 30 mins ${RESET}${PINK}(cron)${RESET}"
-echo ""
-sleep 1
-read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
-echo ""
-# > user says y to cron?
+ # > does crontab exist?
     # > y
-    if [[ $answer == "y" ]]; then
-        # >> does crontab exist?
+    if command -v crontab &>/dev/null; then
+    echo -e "${CYAN} I want to automatically pull updates from my github every 30 mins ${RESET}${PINK}(cron)${RESET}"
+    echo ""
+    sleep 1
+    read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
+    echo ""
+    # >> user says y to cron?
         # >> y
-        if command -v crontab &>/dev/null; then
+        if [[ $answer == "y" ]]; then
             (crontab -l 2>/dev/null; echo "*/30 * * * * cd $SCRIPT_DIR && git pull") | crontab -
             echo -e "${GREEN} > Yay! I'll stay up to date ᓚ₍ ^. .^₎${RESET}"
         # >> n
         else
-            echo -e "${GREEN} > Auto-updates aren't supported on your system${RESET}"
-            echo -e "${GREEN} > You can manually update with:${RESET}"
-            echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
-            echo ""
-            sleep 1
-            echo -e "${CYAN} Since you have to do it manually, I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${CYAN}that does what is written above ${PINK}(bashrc)${RESET}"
-            echo ""
-            sleep 1
-            read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
-            echo ""
-            # >>> user says yes to alias>
-            # >>> y
-                if [[ $answer == "y" ]]; then
-                    echo "" >> ~/.bashrc
-                    echo "alias pixelUpdate=\"cd $SCRIPT_DIR && git pull\"" >> ~/.bashrc
-                    echo -e "${GREEN} > AFTER setup run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
-                fi
-            # >>> n : nothing
-        fi
-    # > n
+            offer_pixelUpdate
+        fi 
+    # > n 
     else
-        echo -e "${GREEN} > You can manually update with:${RESET}"
-        echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
+    echo -e "${CYAN} Auto-updates aren't supported on your system${RESET}"
+    echo ""
+    sleep 1
+    offer_pixelUpdate
     fi
 
 # ALIASES
@@ -75,11 +76,9 @@ echo ""
         echo "alias play=\"$SCRIPT_DIR/scripts/play\"" >> ~/.bashrc
         echo "alias rest=\"$SCRIPT_DIR/scripts/rest\"" >> ~/.bashrc
         echo "alias train=\"$SCRIPT_DIR/scripts/train\"" >> ~/.bashrc
-
         echo ""
         echo -e "${GREEN} > Run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
         echo -e "${GREEN} > Then type${RESET}${BOLD}${PINK} virtualPet${RESET}${GREEN} to get started ${RESET}"
-
     else
         echo -e "${GREEN} > You can still play by running commands manually. Reference the main page${RESET}"
         echo -e "${GREEN} > Main page: ${RESET}"
