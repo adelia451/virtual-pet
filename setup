@@ -41,6 +41,7 @@ echo ""
             # >>> user says yes to alias>
             # >>> y
                 if [[ $answer == "y" ]]; then
+                    echo "" >> ~/.bashrc
                     echo "alias pixelUpdate=\"cd $SCRIPT_DIR && git pull\"" >> ~/.bashrc
                     echo -e "${GREEN} > AFTER setup run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
                 fi
@@ -63,6 +64,7 @@ read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answe
 echo ""
     chmod +x "$SCRIPT_DIR"/scripts/* #scripts always executable
     if [[ $answer == "y" ]]; then
+        echo "" >> ~/.bashrc
         echo "alias virtualPet=\"$SCRIPT_DIR/scripts/virtualPet\"" >> ~/.bashrc
         echo "alias clean=\"$SCRIPT_DIR/scripts/clean\"" >> ~/.bashrc
         echo "alias explore=\"$SCRIPT_DIR/scripts/explore\"" >> ~/.bashrc
