@@ -8,6 +8,7 @@ const app = express()
 // path.join ensures the correct path across environments
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'web')))
+const PET_FILE = path.join(__dirname, 'pet.json')
 
 // read pet.json
 function loadPet() {
