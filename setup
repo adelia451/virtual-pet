@@ -3,6 +3,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$SCRIPT_DIR/scripts/theme" || exit
 
 # brown for text and y/n | cyan for questions | green for responses | pink for command type stuff
+
 echo ""
 echo -e "${BROWN} Hi user${RESET}"
 
@@ -10,8 +11,7 @@ echo ""
 sleep 1
 echo -e "${BROWN} This will allow you to take care of my virtual cat Pixel with me!${RESET}"
 
-# CRON
-
+# CRON 
 echo ""
 sleep 1
 echo -e "${CYAN} I want to automatically pull updates from my github every 30 mins ${RESET}${PINK}(cron)${RESET}"
@@ -38,6 +38,7 @@ echo ""
             echo ""
             sleep 1
             read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
+            echo ""
             # >>> user says yes to alias>
             # >>> y
                 if [[ $answer == "y" ]]; then
@@ -60,7 +61,7 @@ echo -e "${CYAN} I want to add these aliases to your terminal to make shorter co
 echo -e "${PINK} virtualPet | clean | explore | feed | fish | pat | play | rest | train ${RESET}"
 echo ""
 sleep 1
-read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
+read -p "$(echo -e "${CYAN} Is that ok? ${BROWN} (y/n) ${RESET}")" answer
 echo ""
     chmod +x "$SCRIPT_DIR"/scripts/* #scripts always executable
     if [[ $answer == "y" ]]; then
