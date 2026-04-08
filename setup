@@ -23,6 +23,7 @@ offer_pixelUpdate() {
         if [[ $answer == "y" ]]; then
             echo "" >> ~/.bashrc
             echo "alias pixelUpdate=\"cd $SCRIPT_DIR && git pull\"" >> ~/.bashrc
+            echo ""
             echo -e "${GREEN} > AFTER setup run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
         fi
     # >>> n : nothing
@@ -63,7 +64,7 @@ echo -e "${CYAN} I want to add these aliases to your terminal to make shorter co
 echo -e "${PINK} virtualPet | clean | explore | feed | fish | pat | play | rest | train ${RESET}"
 echo ""
 sleep 1
-read -p "$(echo -e "${CYAN} Is that ok? ${BROWN} (y/n) ${RESET}")" answer
+read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
 echo ""
     chmod +x "$SCRIPT_DIR"/scripts/* #scripts always executable
     if [[ $answer == "y" ]]; then
