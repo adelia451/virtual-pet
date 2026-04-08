@@ -19,15 +19,34 @@ echo ""
 sleep 1
 read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
 echo ""
+# > user says y to cron?
+    # > y
     if [[ $answer == "y" ]]; then
+        # >> does crontab exist?
+        # >> y
         if command -v crontab &>/dev/null; then
             (crontab -l 2>/dev/null; echo "*/30 * * * * cd $SCRIPT_DIR && git pull") | crontab -
             echo -e "${GREEN} > Yay! I'll stay up to date ᓚ₍ ^. .^₎${RESET}"
+        # >> n
         else
-            echo -e "${GREEN} > Auto-updates aren't supported on your system.${RESET}"
+            echo -e "${GREEN} > Auto-updates aren't supported on your system${RESET}"
             echo -e "${GREEN} > You can manually update with:${RESET}"
             echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
+            echo ""
+            sleep 1
+            echo -e "${CYAN} Since you have to do it manually, I can add the alias ${RESET}${PINK}pixelUpdate ${RESET}${CYAN}that does what is written above${PINK}(bashrc)${RESET}"
+            echo ""
+            sleep 1
+            read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
+            # >>> user says yes to alias>
+            # >>> y
+                if [[ $answer == "y" ]]; then
+                    echo "alias pixelUpdate=\"cd $SCRIPT_DIR && git pull\"" >> ~/.bashrc
+                    echo -e "${GREEN} > AFTER setup run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
+                fi
+            # >>> n : nothing
         fi
+    # > n
     else
         echo -e "${GREEN} > You can manually update with:${RESET}"
         echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
@@ -60,7 +79,6 @@ echo ""
 
     else
         echo -e "${GREEN} > You can still play by running commands manually. Reference the main page${RESET}"
-        echo ""
         echo -e "${GREEN} > Main page: ${RESET}"
         echo -e "${PINK}   bash $SCRIPT_DIR/scripts/virtualPet${RESET}"
         echo ""
