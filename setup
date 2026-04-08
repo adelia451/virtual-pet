@@ -20,11 +20,17 @@ sleep 1
 read -p "$(echo -e "${CYAN} Is that ok? ${RESET}${BROWN} (y/n) ${RESET}")" answer
 echo ""
     if [[ $answer == "y" ]]; then
-        (crontab -l 2>/dev/null; echo "*/30 * * * * cd $SCRIPT_DIR && git pull") | crontab -
-        echo -e "${GREEN} > Yay! I'll stay up to date ᓚ₍ ^. .^₎${RESET}"
+        if command -v crontab &>/dev/null; then
+            (crontab -l 2>/dev/null; echo "*/30 * * * * cd $SCRIPT_DIR && git pull") | crontab -
+            echo -e "${GREEN} > Yay! I'll stay up to date ᓚ₍ ^. .^₎${RESET}"
+        else
+            echo -e "${GREEN} > Auto-updates aren't supported on your system.${RESET}"
+            echo -e "${GREEN} > You can manually update with:${RESET}"
+            echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
+        fi
     else
         echo -e "${GREEN} > You can manually update with:${RESET}"
-        echo -e "${PINK}    cd $SCRIPT_DIR && git pull${RESET}"
+        echo -e "${PINK}   cd $SCRIPT_DIR && git pull${RESET}"
     fi
 
 # ALIASES
@@ -49,7 +55,6 @@ echo ""
         echo "alias train=\"$SCRIPT_DIR/scripts/train\"" >> ~/.bashrc
 
         echo ""
-        echo ""
         echo -e "${GREEN} > Run ${RESET}${PINK}source ~/.bashrc${RESET}${GREEN} OR open a new terminal to activate commands!${RESET}"
         echo -e "${GREEN} > Then type${RESET}${BOLD}${PINK} virtualPet${RESET}${GREEN} to get started ${RESET}"
 
@@ -57,7 +62,7 @@ echo ""
         echo -e "${GREEN} > You can still play by running commands manually. Reference the main page${RESET}"
         echo ""
         echo -e "${GREEN} > Main page: ${RESET}"
-        echo -e "${PINK}    bash $SCRIPT_DIR/scripts/virtualPet${RESET}"
+        echo -e "${PINK}   bash $SCRIPT_DIR/scripts/virtualPet${RESET}"
         echo ""
     fi
 
