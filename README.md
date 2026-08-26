@@ -26,5 +26,10 @@ The setup script walks you through configuration options:
     bash ~/virtual-pet/scripts/virtualPet
     bash ~/virtual-pet/scripts/play
     ```
+## Score System
 
+Different actions raise the scores of the pet's happiness, hunger, energy, and health. These scores change the image of Pixel that is presented. Swag is hardcoded at 100 because our pet it always cool!
 
+- Happy Pixel Image : All stats must be at least 75.
+- Sad Pixel Image : One stat is 45 or less.
+- Neutral : Any other case.
